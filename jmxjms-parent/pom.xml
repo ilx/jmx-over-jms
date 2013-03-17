@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.ilx.jmxjms</groupId>
+	<artifactId>jmxjms-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>jmsconnector</module>
+		<module>jmsconnector-activemq</module>
+	</modules>
+
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<v.jms-api.version>1.1-rev-1</v.jms-api.version>
+		<v.slf4j.version>1.7.2</v.slf4j.version>
+		<v.spring-framework.version>3.2.1.RELEASE</v.spring-framework.version>
+	</properties>
+
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>net.ilx.jmxjms</groupId>
+				<artifactId>jmsconnector</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.jms</groupId>
+				<artifactId>jms-api</artifactId>
+				<version>${v.jms-api.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${v.slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${v.slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${v.spring-framework.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${v.spring-framework.version}</version>
+			</dependency>
+		</dependencies>
+
+	</dependencyManagement>
+</project>

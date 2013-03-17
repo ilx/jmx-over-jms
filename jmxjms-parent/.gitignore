@@ -1,0 +1,12 @@
+.class
+.project
+.classpath
+.factorypath
+.settings/
+*/.project
+tycho-maven-repository/
+*.log
+target/
+logs/
+bin/
+
