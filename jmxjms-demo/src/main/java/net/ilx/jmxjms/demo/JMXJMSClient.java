@@ -30,7 +30,7 @@ public class JMXJMSClient {
         // Now connect the client-side
         // The URL to the JMS service
         JMXServiceURL clientURL = new JMXServiceURL("service:jmx:jms:///tcp://localhost:61616");
-        Map clientEnv = new HashMap();
+        Map<String,String> clientEnv = new HashMap<String, String>();
         clientEnv.put("jmx.remote.protocol.provider.pkgs", "org.logicblaze.lingo.jmx.remote.provider");
 
         clientEnv.put("destinationServerName", "slave1");

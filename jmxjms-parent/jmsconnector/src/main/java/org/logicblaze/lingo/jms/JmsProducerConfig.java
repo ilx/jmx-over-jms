@@ -23,7 +23,6 @@ import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
-import javax.jms.TemporaryQueue;
 
 /**
  * A simple bean of JMS producer configuration options.

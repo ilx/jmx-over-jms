@@ -18,7 +18,6 @@
 
 package org.logicblaze.lingo.jms;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -73,7 +72,7 @@ public class JmsClientInterceptor extends RemoteInvocationBasedAccessor implemen
     private Marshaller marshaller;
     private ConnectionFactory connectionFactory;
     private String jmsType;
-    private Map messageProperties;
+    private Map<String,Object> messageProperties;
     private int jmsExpiration = -1;
     private JmsProducerConfig producerConfig = new JmsProducerConfig();
     private MetadataStrategy metadataStrategy;
@@ -243,7 +242,7 @@ public class JmsClientInterceptor extends RemoteInvocationBasedAccessor implemen
      * Sets the message properties to be added to each message. Note that the
      * keys should be Strings and the values should be primitive types.
      */
-    public void setMessageProperties(Map messageProperties) {
+    public void setMessageProperties(Map<String, Object> messageProperties) {
         this.messageProperties = messageProperties;
     }
 
@@ -393,12 +392,11 @@ public class JmsClientInterceptor extends RemoteInvocationBasedAccessor implemen
             requestMessage.setJMSPriority(jmsPriority);
         }
         if (messageProperties != null) {
-            for (Iterator iter = messageProperties.entrySet().iterator(); iter.hasNext();) {
-                Map.Entry entry = (Map.Entry) iter.next();
-                String name = entry.getKey().toString();
-                Object value = entry.getValue();
-                requestMessage.setObjectProperty(name, value);
-            }
+        	for (Map.Entry<String,Object> entry : messageProperties.entrySet()) {
+        		String name = entry.getKey();
+        		Object value = entry.getValue();
+        		requestMessage.setObjectProperty(name, value);
+			}
         }
     }
 

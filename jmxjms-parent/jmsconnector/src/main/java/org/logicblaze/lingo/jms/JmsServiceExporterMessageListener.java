@@ -264,7 +264,7 @@ public class JmsServiceExporterMessageListener extends RemoteInvocationBasedExpo
     protected void introduceRemoteReferences(LingoInvocation invocation, Message requestMessage) throws JMSException {
         MethodMetadata metadata = invocation.getMetadata();
         Object[] arguments = invocation.getArguments();
-        Class[] parameterTypes = invocation.getParameterTypes();
+        Class<?>[] parameterTypes = invocation.getParameterTypes();
         for (int i = 0; i < parameterTypes.length; i++) {
             if (metadata.isRemoteParameter(i)) {
                 arguments[i] = createRemoteProxy(requestMessage, parameterTypes[i], arguments[i]);
@@ -272,8 +272,8 @@ public class JmsServiceExporterMessageListener extends RemoteInvocationBasedExpo
         }
     }
 
-    protected Object createRemoteProxy(Message message, Class parameterType, Object argument) throws JMSException {
-        JmsProxyFactoryBean factory = new JmsProxyFactoryBean();
+    protected Object createRemoteProxy(Message message, Class<?> parameterType, Object argument) throws JMSException {
+        JmsProxyFactoryBean<?> factory = new JmsProxyFactoryBean();
         factory.setDestination(message.getJMSReplyTo());
         String correlationID = (String) argument;
         if (log.isDebugEnabled()) {
@@ -285,7 +285,15 @@ public class JmsServiceExporterMessageListener extends RemoteInvocationBasedExpo
         factory.setServiceInterface(parameterType);
         factory.setRequestor(responseRequestor);
         factory.afterPropertiesSet();
-        return factory.getObject();
+        Object res = null;
+		try {
+			res = factory.getObject();
+		} catch (Exception e) {
+			throw new IllegalStateException("Unable to create JmsProxyFactoryBean", e);
+		}
+
+
+        return res;
     }
 
     /**

@@ -16,7 +16,7 @@
  *
  **/
 
-package org.logicblaze.lingo.jmx.remote.jms;
+package org.logicblaze.lingo.jmx.remote.jms.activemq;
 
 import java.io.IOException;
 import java.net.URI;
@@ -37,6 +37,8 @@ import org.apache.commons.logging.LogFactory;
 import org.logicblaze.lingo.jms.JmsProducerConfig;
 import org.logicblaze.lingo.jms.JmsServiceExporter;
 import org.logicblaze.lingo.jms.impl.MultiplexingRequestor;
+import org.logicblaze.lingo.jmx.remote.jms.JmsJmxConnectorSupport;
+import org.logicblaze.lingo.jmx.remote.jms.MBeanJmsServerConnection;
 import org.logicblaze.lingo.jmx.remote.provider.jms.JmsJmxConnectorServer;
 
 /**

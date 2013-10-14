@@ -1,4 +1,4 @@
-package org.logicblaze.lingo.jmx.remote.jms;
+package org.logicblaze.lingo.jmx.remote.jms.activemq;
 
 import java.io.IOException;
 import java.net.URI;
@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.activemq.util.IntrospectionSupport;
 import org.apache.activemq.util.URISupport;
+import org.logicblaze.lingo.jmx.remote.jms.JmsJmxConnectorSupport;
 
 public class ActiveMQJmsJmxConnectorSupport extends JmsJmxConnectorSupport {
 

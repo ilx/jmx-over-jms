@@ -12,7 +12,7 @@
  * specific language governing permissions and limitations under the License.
  *
  */
-package org.logicblaze.lingo.jmx.remote.jms;
+package org.logicblaze.lingo.jmx.remote.jms.activemq;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -26,6 +26,8 @@ import javax.management.ObjectName;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.logicblaze.lingo.jmx.remote.jms.MBeanJmsServerConnection;
+import org.logicblaze.lingo.jmx.remote.jms.MBeanServerConnectionDelegate;
 /**
  * @version $Revision: 94 $
  */

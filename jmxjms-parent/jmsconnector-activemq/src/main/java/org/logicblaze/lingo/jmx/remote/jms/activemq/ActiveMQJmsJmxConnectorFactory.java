@@ -1,4 +1,4 @@
-package org.logicblaze.lingo.jmx.remote.jms;
+package org.logicblaze.lingo.jmx.remote.jms.activemq;
 
 import java.io.IOException;
 import java.util.Map;

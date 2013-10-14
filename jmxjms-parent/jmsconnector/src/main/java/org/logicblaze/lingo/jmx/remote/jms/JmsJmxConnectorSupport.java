@@ -22,28 +22,29 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Map;
 
 import javax.management.remote.JMXServiceURL;
 
 /**
  * @version $Revision: 95 $
  */
-abstract class JmsJmxConnectorSupport {
+public abstract class JmsJmxConnectorSupport {
     /**
      * Default destination prefix
      */
-    static final String DEFAULT_DESTINATION_PREFIX = "org.logicblaze.jms.jmx.";
+    public static final String DEFAULT_DESTINATION_PREFIX = "jms.jmx.";
+
+    // TODO ILX: remove static fields
     /**
      * The default destination server name
      */
-    static final String MBEAN_SERVER_NAME = "*";
+    public static final String MBEAN_SERVER_NAME = "*";
     /**
      * The default destination group name
      */
-    static final String MBEAN_GROUP_NAME = "*";
+    public static final String MBEAN_GROUP_NAME = "*";
 
-    static URI getProviderURL(JMXServiceURL serviceURL) throws IOException {
+    public static URI getProviderURL(JMXServiceURL serviceURL) throws IOException {
         String protocol = serviceURL.getProtocol();
         if (!"jms".equals(protocol))
             throw new MalformedURLException("Wrong protocol " + protocol + " expecting jms ");
